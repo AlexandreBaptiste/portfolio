@@ -61,10 +61,10 @@ export function Sidebar() {
 
   return (
     /* Hidden on mobile (md: = screens >= 768px show it) */
-    <aside className="hidden md:flex fixed left-0 top-0 h-full w-48 flex-col justify-between py-16 px-6 border-r border-[var(--color-border)] bg-[var(--color-bg)] z-40">
+    <aside className="hidden md:flex fixed left-0 top-0 h-full w-48 flex-col items-center py-16 px-6 border-r border-[var(--color-border)] bg-[var(--color-bg)] z-40">
       {/* --- Section navigation --- */}
       <nav aria-label="Page sections">
-        <ul className="flex flex-col gap-6">
+        <ul className="flex flex-col items-center gap-6">
           {NAV_ITEMS.map(({ id, label }) => {
             const isActive = activeSection === id
             return (
@@ -72,7 +72,7 @@ export function Sidebar() {
                 <button
                   onClick={() => scrollTo(id)}
                   className={cn(
-                    'relative text-sm font-medium transition-colors duration-200 cursor-pointer text-left',
+                    'relative text-base font-medium transition-colors duration-200 cursor-pointer text-center',
                     isActive
                       ? 'text-[var(--color-text)]'
                       : 'text-[var(--color-muted)] hover:text-[var(--color-text)]',
@@ -95,8 +95,8 @@ export function Sidebar() {
         </ul>
       </nav>
 
-      {/* --- Contact icon links --- */}
-      <div className="flex flex-col gap-4" role="list" aria-label="Contact links">
+      {/* --- Contact icon links — directly below nav with a top margin --- */}
+      <div className="flex flex-col items-center gap-5 mt-10" role="list" aria-label="Contact links">
         {CONTACT_LINKS.map(({ label, href, icon: Icon }) => (
           <a
             key={label}
@@ -106,7 +106,7 @@ export function Sidebar() {
             aria-label={label}
             className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors duration-200"
           >
-            <Icon size={18} />
+            <Icon size={26} />
           </a>
         ))}
       </div>

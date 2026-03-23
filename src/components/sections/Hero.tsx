@@ -8,7 +8,7 @@
  *
  * Animation: each element fades in and slides up from below on page load.
  * This uses Framer Motion's motion.div with initial/animate variants.
- * The iewport={{ once: true }} option means the animation plays only
+ * The viewport={{ once: true }} option means the animation plays only
  * the first time the element enters the screen — not every time you scroll.
  */
 
@@ -26,7 +26,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-[60vh] flex flex-col justify-center py-24"
+      className="py-24"
       aria-label="Introduction"
     >
       {/* Staggered container: each child animates after the previous one
@@ -39,21 +39,12 @@ export function Hero() {
         }}
         className="flex flex-col gap-4"
       >
-        <motion.p
-          variants={fadeUp}
-          transition={{ duration: 0.5 }}
-          className="text-sm font-medium tracking-widest uppercase text-[var(--color-muted)]"
-        >
-          Portfolio
-        </motion.p>
-
         <motion.h1
           variants={fadeUp}
           transition={{ duration: 0.5 }}
-          className="text-5xl md:text-6xl font-bold tracking-tight text-[var(--color-text)]"
+          className="text-5xl md:text-6xl font-thin tracking-widest uppercase text-[var(--color-text)] leading-tight"
         >
-          Alexandre{' '}
-          <span className="text-[var(--color-muted)]">BAPTISTE</span>
+          Alexandre<br />Baptiste
         </motion.h1>
 
         <motion.p

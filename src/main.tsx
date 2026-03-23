@@ -14,7 +14,8 @@
  * (this does NOT happen in production builds).
  */
 
-// Font — load the weights we use (400 = regular, 600 = semibold, 700 = bold)
+// Font — load the weights we use (100 = thin, 400 = regular, 600 = semibold, 700 = bold)
+import '@fontsource/montserrat/100.css'
 import '@fontsource/montserrat/400.css'
 import '@fontsource/montserrat/600.css'
 import '@fontsource/montserrat/700.css'

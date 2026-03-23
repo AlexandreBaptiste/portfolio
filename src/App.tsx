@@ -33,14 +33,18 @@ export default function App() {
       <MobileNav />
 
       {/* ---- Main scrollable content ----
-          pl-0 on mobile (no sidebar), pl-48 on md+ to clear the fixed sidebar */}
-      <main className="md:pl-48 px-6 md:px-16 max-w-4xl" id="main-content">
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-      </main>
+          pl-0 on mobile (no sidebar), pl-48 on md+ to clear the fixed sidebar
+          The outer div centers the content horizontally within the remaining space */}
+      {/* Hero + About stacked, then Skills/Projects/Experience — all centered */}
+      <div className="md:pl-48 flex justify-center">
+        <main className="w-full max-w-5xl px-6 md:px-12" id="main-content">
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Experience />
+        </main>
+      </div>
     </div>
   )
 }

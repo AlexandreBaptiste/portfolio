@@ -31,24 +31,13 @@ export function About() {
         </h2>
 
         {/* ---- EDIT THIS CONTENT ---- */}
-        <div className="flex flex-col gap-5 max-w-2xl text-[var(--color-muted)] leading-relaxed">
+        <div className="flex flex-col gap-5 text-[var(--color-muted)] leading-relaxed">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua. I am a Senior Software Engineer
             and Technical Leader with 8 years of experience at Capgemini, specialising in
             backend development and systems architecture.
-          </p>
-          <p>
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. I am passionate about engineering quality,
-            building maintainable systems, and exploring the intersection of software and
-            artificial intelligence.
-          </p>
-          <p>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-            eu fugiat nulla pariatur. I am currently expanding my skills into frontend
-            development with React, and building AI-powered tools that solve real problems.
-          </p>
+          </p>          
         </div>
         {/* ---- END EDIT ---- */}
       </motion.div>
