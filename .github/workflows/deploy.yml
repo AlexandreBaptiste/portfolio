@@ -31,6 +31,12 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
+    # Opt into Node.js 24 for all GitHub Actions runners.
+    # This silences the Node.js 20 deprecation warning and prepares the
+    # workflow for the mandatory switch to Node.js 24 on June 2nd, 2026.
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
     # Required permissions for GitHub Pages deployment
     permissions:
       contents: read
@@ -48,7 +54,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           cache: 'npm'
 
       - name: Install dependencies
