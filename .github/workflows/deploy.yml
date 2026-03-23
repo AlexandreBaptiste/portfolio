@@ -1,0 +1,68 @@
+﻿# .github/workflows/deploy.yml
+#
+# GitHub Actions workflow: build and deploy to GitHub Pages on every push to main.
+#
+# HOW IT WORKS:
+# 1. Triggered by a push to the "main" branch
+# 2. Checks out the code
+# 3. Sets up Node.js
+# 4. Installs npm dependencies (ci = clean install, faster in CI)
+# 5. Runs the Vite build (outputs to dist/)
+# 6. Deploys the dist/ folder to GitHub Pages
+#
+# FIRST-TIME SETUP (do once in GitHub):
+# - Go to your repo Settings > Pages
+# - Set "Source" to "GitHub Actions"
+# - The workflow will then have permission to deploy
+
+name: Deploy Portfolio to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+# Allow only one concurrent deployment
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    # Required permissions for GitHub Pages deployment
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload the Vite build output folder
+          path: dist/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

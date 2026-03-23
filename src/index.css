@@ -1,0 +1,66 @@
+﻿/* =============================================================================
+   index.css — Main stylesheet for Alexandre BAPTISTE's portfolio
+   
+   HOW THIS WORKS WITH TAILWIND v4:
+   - "@import tailwindcss" replaces the old @tailwind base/components/utilities
+   - "@theme" is where you define your design tokens (colors, fonts, etc.)
+     These tokens become Tailwind utility classes automatically.
+     e.g. --color-bg -> bg-bg, --font-sans -> font-sans
+   - "@layer base" lets you set baseline HTML element styles (like body, html)
+   - CSS variables (--var-name) make it easy to update the entire theme
+     from one place.
+   ============================================================================= */
+
+@import "tailwindcss";
+
+@theme {
+  /* ---- Typography ---- */
+  /* Montserrat is loaded from @fontsource/montserrat in main.tsx */
+  --font-sans: 'Montserrat', system-ui, sans-serif;
+
+  /* ---- Dark mode colors (default) ---- */
+  --color-bg:         #0A0A0A;  /* pure black background */
+  --color-surface:    #141414;  /* slightly lighter black for cards */
+  --color-border:     #2A2A2A;  /* subtle borders */
+  --color-text:       #FFFFFF;  /* primary text */
+  --color-muted:      #888888;  /* secondary/faded text */
+  --color-accent:     #FFFFFF;  /* interactive accent (white-on-black) */
+  --color-accent-hover: #CCCCCC;
+
+  /* ---- Spacing / radius ---- */
+  --radius-card: 0.5rem;
+}
+
+/* =============================================================================
+   Base layer: applies to all HTML elements without needing classes.
+   "html" and "body" are set here so the background fills the full viewport.
+   ============================================================================= */
+@layer base {
+  html {
+    /* Smooth scrolling when clicking sidebar navigation links */
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    /* Prevent horizontal scrollbar from appearing */
+    overflow-x: hidden;
+  }
+
+  /* ---- Light mode overrides ----
+     When the <html> element has class "light", these CSS variables are
+     overridden. The useTheme hook adds/removes this class on <html>.
+     All Tailwind utilities that use these variables will update automatically.
+  */
+  html.light {
+    --color-bg:           #FFFFFF;
+    --color-surface:      #F5F5F5;
+    --color-border:       #E0E0E0;
+    --color-text:         #0A0A0A;
+    --color-muted:        #666666;
+    --color-accent:       #0A0A0A;
+    --color-accent-hover: #333333;
+  }
+}
