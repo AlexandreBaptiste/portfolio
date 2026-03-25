@@ -23,7 +23,6 @@ import { cn } from '@/lib/utils'
 import { motion } from 'framer-motion'
 import { useTranslation } from '@/context/LanguageContext'
 
-// NAV_ITEMS now just stores section IDs; labels come from translations.
 const NAV_ITEMS = [
   { id: 'about'      },
   { id: 'skills'     },
@@ -33,7 +32,6 @@ const NAV_ITEMS = [
 
 const SECTION_IDS = NAV_ITEMS.map(item => item.id)
 
-// Contact info — update URLs/email here if they change
 const CONTACT_LINKS = [
   {
     label: 'LinkedIn',

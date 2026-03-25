@@ -78,12 +78,10 @@ function ProjectCard({ project, t }: ProjectCardProps) {
         )}
       </div>
 
-      {/* Description */}
       <p className="text-sm text-[var(--color-muted)] leading-relaxed flex-1">
         {project.description}
       </p>
 
-      {/* Technology tags */}
       <div className="flex flex-wrap gap-1.5">
         {project.tags.map(tag => (
           <span
@@ -95,7 +93,6 @@ function ProjectCard({ project, t }: ProjectCardProps) {
         ))}
       </div>
 
-      {/* GitHub link */}
       <a
         href={project.githubUrl}
         target="_blank"

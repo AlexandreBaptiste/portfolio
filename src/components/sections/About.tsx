@@ -33,7 +33,6 @@ export function About() {
           {t.about.heading}
         </h2>
 
-        {/* ---- EDIT THIS CONTENT ---- */}
         <div className="flex flex-col gap-5 text-[var(--color-muted)] leading-relaxed">
           <p>
             Développeur sénior avec 9 ans d’expérience chez Capgemini, j’évolue principalement sur des problématiques backend,
@@ -48,7 +47,6 @@ export function About() {
             tout en veillant à offrir à mon équipe un cadre clair et efficace.
           </p>          
         </div>
-        {/* ---- END EDIT ---- */}
       </motion.div>
     </section>
   )

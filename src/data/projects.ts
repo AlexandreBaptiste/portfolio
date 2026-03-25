@@ -23,11 +23,6 @@ export interface Project {
   aiPowered?: boolean
 }
 
-/**
- * -----------------------------------------------------------------------
- * PROJECTS LIST — replace placeholder entries with your real projects.
- * -----------------------------------------------------------------------
- */
 export const projects: Project[] = [
   {
     title: 'DotNet Starter Kit',

@@ -38,7 +38,7 @@ export function Experience() {
 
           {experiences.map((exp, index) => (
             <motion.article
-              key={`${exp.company}-${index}`}
+              key={`${exp.project}-${index}`}
               initial={{ opacity: 0, x: -10 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -53,11 +53,11 @@ export function Experience() {
 
               {/* Date range */}
               <p className="text-xs font-medium text-[var(--color-muted)] mb-1 tracking-wide uppercase">
-                {exp.startDate} — {exp.endDate}
+                {exp.startDate} — {exp.endDate} — {exp.company} 
               </p>
 
-              {/* Company & Role */}
-              <h3 className="font-semibold text-[var(--color-text)] mb-0.5">{exp.company}</h3>
+              {/* Porject & Role */}
+              <h3 className="font-semibold text-[var(--color-text)] mb-0.5">{exp.project}</h3>
               <p className="text-sm text-[var(--color-muted)] mb-3 italic">{exp.role}</p>
 
               {/* Description */}
