@@ -19,6 +19,7 @@ export interface Translations {
   }
   hero: {
     tagline: string
+    certificationLabel: string
   }
   about: {
     heading: string
@@ -50,6 +51,7 @@ export const translations: Record<Language, Translations> = {
     },
     hero: {
       tagline: 'Senior Backend Developer · Technical Leader · .NET Enthusiast',
+      certificationLabel: 'GitHub Copilot Certified · GH-300',
     },
     about: {
       heading: 'About Me',
@@ -83,6 +85,7 @@ export const translations: Record<Language, Translations> = {
     },
     hero: {
       tagline: 'Développeur Backend Senior · Lead Technique · Passionné .NET',
+      certificationLabel: 'Certifié GitHub Copilot · GH-300',
     },
     about: {
       heading: 'À propos',

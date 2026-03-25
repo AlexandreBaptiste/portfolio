@@ -13,6 +13,7 @@
  */
 
 import { motion } from 'framer-motion'
+import { Award } from 'lucide-react'
 import { useTranslation } from '@/context/LanguageContext'
 
 // Reusable animation variant:
@@ -57,6 +58,20 @@ export function Hero() {
         >
           {t.hero.tagline}
         </motion.p>
+
+        {/* Certification badge */}
+        <motion.a
+          variants={fadeUp}
+          transition={{ duration: 0.5 }}
+          href="https://learn.microsoft.com/en-us/users/baptistealexandre-5281/credentials/certification/github-copilot?tab=credentials-tab"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t.hero.certificationLabel}
+          className="w-fit flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-muted)] text-xs font-medium tracking-wide hover:border-[var(--color-text)] hover:text-[var(--color-text)] transition-colors duration-200 group"
+        >
+          <Award size={13} className="text-[var(--color-accent)] flex-shrink-0" />
+          {t.hero.certificationLabel}
+        </motion.a>
       </motion.div>
     </section>
   )
