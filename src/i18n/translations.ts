@@ -16,7 +16,6 @@ export interface Translations {
   }
   languageToggle: {
     ariaLabel: string
-    switchLabel: string
   }
   hero: {
     tagline: string
@@ -48,7 +47,6 @@ export const translations: Record<Language, Translations> = {
     },
     languageToggle: {
       ariaLabel:   'Switch language',
-      switchLabel: 'FR',
     },
     hero: {
       tagline: 'Senior Backend Developer · Technical Leader · .NET Enthusiast',
@@ -82,7 +80,6 @@ export const translations: Record<Language, Translations> = {
     },
     languageToggle: {
       ariaLabel:   'Changer de langue',
-      switchLabel: 'EN',
     },
     hero: {
       tagline: 'Développeur Backend Senior · Lead Technique · Passionné .NET',
