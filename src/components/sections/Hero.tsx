@@ -30,7 +30,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="py-24"
+      className="pt-16 pb-25"
       aria-label="Introduction"
     >
       {/* Staggered container: each child animates after the previous one
@@ -46,9 +46,9 @@ export function Hero() {
         <motion.h1
           variants={fadeUp}
           transition={{ duration: 0.5 }}
-          className="text-5xl md:text-6xl font-thin tracking-widest uppercase text-[var(--color-text)] leading-tight"
+          className="text-5xl md:text-6xl font-thin tracking-widest text-[var(--color-text)] leading-tight"
         >
-          Alexandre<br />Baptiste
+          Alexandre<br /><span className="uppercase">Baptiste</span>
         </motion.h1>
 
         <motion.p
@@ -67,9 +67,9 @@ export function Hero() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={t.hero.certificationLabel}
-          className="w-fit flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-muted)] text-xs font-medium tracking-wide hover:border-[var(--color-text)] hover:text-[var(--color-text)] transition-colors duration-200 group"
+          className="w-fit flex items-center gap-2.5 px-4 py-2 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-muted)] text-sm font-medium tracking-wide hover:border-[var(--color-text)] hover:text-[var(--color-text)] transition-colors duration-200 group"
         >
-          <Award size={13} className="text-[var(--color-accent)] flex-shrink-0" />
+          <Award size={16} className="text-[var(--color-accent)] flex-shrink-0" />
           {t.hero.certificationLabel}
         </motion.a>
       </motion.div>

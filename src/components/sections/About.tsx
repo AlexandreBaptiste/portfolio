@@ -19,7 +19,7 @@ export function About() {
   const { t } = useTranslation()
 
   return (
-    <section id="about" className="py-24" aria-labelledby="about-heading">
+    <section id="about" className="pt-4 pb-20" aria-labelledby="about-heading">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

@@ -13,6 +13,16 @@ import { motion } from 'framer-motion'
 import { experiences } from '@/data/experience'
 import { useTranslation } from '@/context/LanguageContext'
 
+/** Split a highlight string like "Auth — Detail text" into label + body. */
+function parseHighlight(highlight: string): { label: string; body: string } {
+  const separatorIndex = highlight.indexOf(' — ')
+  if (separatorIndex === -1) return { label: '', body: highlight }
+  return {
+    label: highlight.slice(0, separatorIndex),
+    body: highlight.slice(separatorIndex + 3),
+  }
+}
+
 export function Experience() {
   const { t } = useTranslation()
 
@@ -32,7 +42,7 @@ export function Experience() {
         </h2>
 
         {/* Timeline container */}
-        <div className="relative flex flex-col gap-10">
+        <div className="relative flex flex-col gap-14">
           {/* Vertical timeline line */}
           <div className="absolute left-2 top-2 bottom-0 w-px bg-[var(--color-border)]" aria-hidden="true" />
 
@@ -51,33 +61,46 @@ export function Experience() {
                 aria-hidden="true"
               />
 
-              {/* Date range */}
-              <p className="text-xs font-medium text-[var(--color-muted)] mb-1 tracking-wide uppercase">
-                {exp.startDate} — {exp.endDate} — {exp.company} 
-              </p>
+              {/* Header row: dates + company */}
+              <div className="flex flex-wrap items-center gap-2 mb-2">
+                <span className="text-xs font-medium text-[var(--color-muted)] tracking-wide uppercase">
+                  {exp.startDate} — {exp.endDate}
+                </span>
+                <span className="text-xs text-[var(--color-muted)] opacity-40" aria-hidden="true">·</span>
+              </div>
 
-              {/* Porject & Role */}
-              <h3 className="font-semibold text-[var(--color-text)] mb-0.5">{exp.project}</h3>
-              <p className="text-sm text-[var(--color-muted)] mb-3 italic">{exp.role}</p>
+              {/* Project & Role */}
+              <div className="flex flex-wrap items-baseline gap-2 mb-3">
+                <h3 className="font-semibold text-[var(--color-text)]">{exp.project}</h3>
+                <p className="text-xs text-[var(--color-muted)] italic">{exp.role}</p>
+              </div>
 
-              {/* Description */}
-              <p className="text-sm text-[var(--color-muted)] leading-relaxed mb-4">
+              {/* Description — visually lighter */}
+              <p className="text-xs text-[var(--color-muted)] leading-relaxed mb-4 opacity-80 border-l-2 border-[var(--color-border)] pl-3">
                 {exp.description}
               </p>
 
-              {/* Highlight bullet points */}
+              {/* Highlights grid */}
               {exp.highlights.length > 0 && (
-                <ul className="flex flex-col gap-1.5">
-                  {exp.highlights.map((highlight, i) => (
-                    <li
-                      key={i}
-                      className="text-sm text-[var(--color-muted)] flex items-start gap-2"
-                    >
-                      {/* Bullet character */}
-                      <span className="mt-1 text-[var(--color-text)] flex-shrink-0" aria-hidden="true">·</span>
-                      {highlight}
-                    </li>
-                  ))}
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  {exp.highlights.map((highlight, i) => {
+                    const { label, body } = parseHighlight(highlight)
+                    return (
+                      <li
+                        key={i}
+                        className="flex flex-col gap-0.5 bg-[var(--color-border)]/20 rounded-sm px-3 py-2"
+                      >
+                        {label && (
+                          <span className="text-[10px] font-semibold text-[var(--color-text)] uppercase tracking-wider opacity-70">
+                            {label}
+                          </span>
+                        )}
+                        <span className="text-xs text-[var(--color-muted)] leading-snug">
+                          {body}
+                        </span>
+                      </li>
+                    )
+                  })}
                 </ul>
               )}
             </motion.article>

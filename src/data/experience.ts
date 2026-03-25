@@ -36,12 +36,12 @@ export const experiences: Experience[] = [
       'I knew the git basics but now I feel fully capable of doing the majority of what could be ask, merge, pull, rebase, finish release ... '+
       'Also being able to work with nearly everything .NET Core related, from API development to microservices architecture, has been a great opportunity to deepen my expertise in this ecosystem.',
     highlights: [
-      'Auth — Private Key JWT : Full implementation of PKJWT authentication flow for secure API access, enhancing security posture and compliance',
-      'CI/CD — Pipeline: Established robust CI/CD pipelines using Azure DevOps, automating build, test, and deployment processes to accelerate delivery and improve reliability',
-      'Kubernetes — Discovering and mastering: Gained hands-on experience with Kubernetes for container orchestration, enabling scalable and efficient deployment of applications',
-      '.NET Core — API development: Led the design and development of RESTful APIs using .NET Core, delivering high-performance (I hope) and migrate version from 6 to 11',
-      'Technical Leadership — Being irreproachable: Inforcing myself to be a technical reference for the team, providing guidance on best practices, code reviews, and architectural decisions',
-      'Tests — Unit & Integration: Discovered Test Driven Development (TDD) and implemented unit and integration testing with Gherkin and SpecFlow'
+      'Auth — Full implementation of PKJWT authentication flow for secure API access, enhancing security posture and compliance',
+      'CI/CD — Established robust CI/CD pipelines using Azure DevOps, automating build, test, and deployment processes to accelerate delivery and improve reliability',
+      'Kubernetes — Gained hands-on experience with Kubernetes for container orchestration, enabling scalable and efficient deployment of applications',
+      '.NET Core — Led the design and development of RESTful APIs using .NET Core, delivering high-performance (I hope) and migrate version from 6 to 11',
+      'Technical Leadership — Inforcing myself to be a technical reference for the team, providing guidance on best practices, code reviews, and architectural decisions',
+      'Tests — Discovered Test Driven Development (TDD) and implemented unit and integration testing with Gherkin and SpecFlow'
     ],
   },
   {
@@ -73,9 +73,9 @@ export const experiences: Experience[] = [
       'I learned a lot about software development, teamwork, and problem-solving during this period. ' +
       'Git, Jenkins, Versioning, old ASP.NET, a big monolithic codebase with a lot of performances issues... It was a tough but rewarding experience!',
     highlights: [
-      'Versioning — SVN to Git: Migrated version control from SVN to Git, improving collaboration and code management',
+      'Versioning — Migrated version control from SVN to Git, improving collaboration and code management',
       'Jenkins — What is continuous integration?: Tried to maintain Jenkins pipelines as best as I could',
-      'Effort Estimation: Learned to estimate effort and plan tasks effectively, contributing to project planning and delivery',
+      'Effort Estimation — Learned to estimate effort and plan tasks effectively, contributing to project planning and delivery',
     ],
   },
 ]
