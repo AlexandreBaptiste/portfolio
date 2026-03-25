@@ -1,12 +1,13 @@
 # Copilot instructions
 
-**Before any development or code generation, always systematically read all instruction files in `.github/instructions/`.** This is mandatory to ensure all project rules (DDD, Object Calisthenics, etc.) are loaded and applied correctly.
+**Before any development or code generation, always systematically read all instruction files in `.github/instructions/` and all skills files in `.github/skills/`.** This is mandatory to ensure all project rules (DDD, Object Calisthenics, etc.) are loaded and applied correctly.
 
 ## Language Policy
 
-All instructions and prompts in this repository must be written in English. This applies to:
+All instructions and prompts in this repository must be written in English but when the user is demanding otherwise. This applies to:
 - All rule and instruction files in `.github/instructions/`
 - All prompt files in `.github/prompts/`
+- All skill files in `.github/skills/`
 - All documentation and code comments intended for contributors
 
 ## Development code generation
@@ -19,7 +20,7 @@ It is **EXTREMELY important that you follow the instructions in files very caref
 
 **IMPORTANT:** Always follow these steps when implementing new features:
 
-1. Consult any relevant instructions files listed below and start by listing which instruction files have been used to guide the implementation (e.g. `Instructions used: [csharp.instructions.md, playwright-dotnet.instructions.md]`).
+1. Consult any relevant instructions files listed below and start by listing which instruction files have been used to guide the implementation (e.g. `Instructions used: [object-calisthenics.instructions.md]`).
 
 2. When working with csharp code, Always run `dotnet test` or `dotnet build` to verify that all tests pass before committing your changes.
    Don't ask to run the tests, just do it. If you are not sure how to run the tests, ask for help.
