@@ -10,43 +10,40 @@
  */
 
 import { motion, AnimatePresence } from 'framer-motion'
+import frFlag from 'flag-icons/flags/1x1/fr.svg'
+import gbFlag from 'flag-icons/flags/1x1/gb.svg'
 
 interface LanguageToggleProps {
-  /** Current language: 'en' or 'fr' */
   language: 'en' | 'fr'
-  /** Called when the button is clicked */
   toggleLanguage: () => void
 }
 
-// Shows the flag of the language you will switch TO on click:
-// currently EN → show 🇫🇷 (click to go French)
-// currently FR → show 🇬🇧 (click to go English)
-const FLAGS: Record<'en' | 'fr', { emoji: string; ariaLabel: string }> = {
-  en: { emoji: '🇫🇷', ariaLabel: 'Switch to French / Passer en français' },
-  fr: { emoji: '🇬🇧', ariaLabel: 'Switch to English / Passer en anglais' },
+const FLAGS: Record<'en' | 'fr', { src: string; ariaLabel: string }> = {
+  en: { src: frFlag, ariaLabel: 'Switch to French / Passer en français' },
+  fr: { src: gbFlag, ariaLabel: 'Switch to English / Passer en anglais' },
 }
 
 export function LanguageToggle({ language, toggleLanguage }: LanguageToggleProps) {
-  const { emoji, ariaLabel } = FLAGS[language]
+  const { src, ariaLabel } = FLAGS[language]
 
   return (
     <button
       onClick={toggleLanguage}
       aria-label={ariaLabel}
-      className="fixed top-4 right-14 z-50 w-9 h-9 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] transition-colors duration-300 cursor-pointer flex items-center justify-center overflow-hidden"
+      className="fixed top-4 right-14 z-50 w-9 h-9 rounded-full border border-[var(--color-border)] cursor-pointer overflow-hidden p-0"
     >
       <AnimatePresence mode="wait" initial={false}>
-        <motion.span
-          key={emoji}
+        <motion.img
+          key={src}
+          src={src}
+          alt=""
+          aria-hidden="true"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 10 }}
           transition={{ duration: 0.2 }}
-          className="text-lg leading-none"
-          style={{ fontFamily: 'Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji, sans-serif' }}
-        >
-          {emoji}
-        </motion.span>
+          className="w-full h-full object-cover block"
+        />
       </AnimatePresence>
     </button>
   )
