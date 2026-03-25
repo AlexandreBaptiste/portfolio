@@ -53,10 +53,12 @@ const CONTACT_LINKS = [
 ] as const
 
 export function Sidebar() {
-  const activeSection = useActiveSection([...SECTION_IDS])
+  const { activeSection, setActiveSection } = useActiveSection([...SECTION_IDS])
   const { t } = useTranslation()
 
   const scrollTo = (id: string) => {
+    // Immediately update the underline so it doesn't wait for the scroll animation
+    setActiveSection(id)
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
   }
 

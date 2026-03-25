@@ -12,10 +12,10 @@ describe('Experience', () => {
     expect(screen.getByRole('heading', { name: /experience/i })).toBeInTheDocument()
   })
 
-  it('renders each experience company and role', () => {
+  it('renders each experience project title and role', () => {
     render(<Experience />)
     experiences.forEach(exp => {
-      expect(screen.getByText(exp.company)).toBeInTheDocument()
+      expect(screen.getByText(exp.project)).toBeInTheDocument()
       expect(screen.getByText(exp.role)).toBeInTheDocument()
     })
   })
@@ -23,7 +23,8 @@ describe('Experience', () => {
   it('renders date ranges', () => {
     render(<Experience />)
     experiences.forEach(exp => {
-      expect(screen.getByText(new RegExp(exp.startDate))).toBeInTheDocument()
+      const matches = screen.getAllByText(new RegExp(exp.startDate))
+      expect(matches.length).toBeGreaterThan(0)
     })
   })
 })

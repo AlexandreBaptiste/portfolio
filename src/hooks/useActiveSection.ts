@@ -6,43 +6,55 @@
  *
  * HOW IT WORKS:
  * - Uses the browser's IntersectionObserver API to watch multiple elements.
- * - Each section has an id (e.g. "about", "skills") — we observe them all.
- * - When a section enters the viewport (at least 30% visible),
- *   it becomes the "active" section.
- * - As the user scrolls down, the active section updates automatically.
+ * - Tracks how much of each section is visible; the section with the greatest
+ *   intersection ratio becomes active. This handles cases where clicking a nav
+ *   link scrolls to a section that only partially fills the viewport (e.g. when
+ *   the previous section is still partially visible at the top).
+ * - `setActiveSection` is also returned so the Sidebar can immediately set the
+ *   active section on a nav click, before the scroll animation completes.
  *
  * USAGE:
- *   const activeSection = useActiveSection(['about', 'skills', 'projects', 'experience'])
- *   // activeSection === 'skills' when the skills section is in view
+ *   const { activeSection, setActiveSection } = useActiveSection([...])
  */
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
-export function useActiveSection(sectionIds: string[]): string {
+export function useActiveSection(sectionIds: string[]): {
+  activeSection: string
+  setActiveSection: (id: string) => void
+} {
   const [activeSection, setActiveSection] = useState<string>(sectionIds[0] ?? '')
+  // Track the latest ratio for each section so we can pick the most-visible one
+  const ratiosRef = useRef<Record<string, number>>({})
 
   useEffect(() => {
-    // threshold: 0.3 means the section must be 30% visible to become active
     const observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id)
-          }
+          ratiosRef.current[entry.target.id] = entry.intersectionRatio
         })
+
+        // Set active to whichever observed section has the highest visible ratio
+        const [mostVisible] = Object.entries(ratiosRef.current).reduce(
+          (best, current) => (current[1] > best[1] ? current : best),
+          ['', 0],
+        )
+
+        if (mostVisible) {
+          setActiveSection(mostVisible)
+        }
       },
-      { threshold: 0.3 },
+      // Multiple thresholds give us finer-grained ratio updates
+      { threshold: [0, 0.1, 0.2, 0.3, 0.5, 0.75, 1.0] },
     )
 
-    // Attach observer to each section element
     sectionIds.forEach(id => {
       const element = document.getElementById(id)
       if (element) observer.observe(element)
     })
 
-    // Cleanup: stop observing when the component using this hook unmounts
     return () => observer.disconnect()
   }, [sectionIds])
 
-  return activeSection
+  return { activeSection, setActiveSection }
 }
