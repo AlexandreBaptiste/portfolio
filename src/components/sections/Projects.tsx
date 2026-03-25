@@ -19,8 +19,13 @@
 import { motion } from 'framer-motion'
 import { Github, ExternalLink, Sparkles } from 'lucide-react'
 import { projects } from '@/data/projects'
+import { useTranslation } from '@/context/LanguageContext'
+import type { Project } from '@/data/projects'
+import type { Translations } from '@/i18n/translations'
 
 export function Projects() {
+  const { t } = useTranslation()
+
   return (
     <section id="projects" className="py-24" aria-labelledby="projects-heading">
       <motion.div
@@ -33,13 +38,13 @@ export function Projects() {
           id="projects-heading"
           className="text-2xl font-semibold mb-10 text-[var(--color-text)]"
         >
-          Projects
+          {t.projects.heading}
         </h2>
 
         {/* Responsive grid: 1 column on mobile, 2 on md, 3 on lg screens */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
           {projects.map(project => (
-            <ProjectCard key={project.title} project={project} />
+            <ProjectCard key={project.title} project={project} t={t.projects} />
           ))}
         </div>
       </motion.div>
@@ -48,13 +53,13 @@ export function Projects() {
 }
 
 /* ---- Helper sub-component: a single project card ---- */
-import type { Project } from '@/data/projects'
 
 interface ProjectCardProps {
   project: Project
+  t: Translations['projects']
 }
 
-function ProjectCard({ project }: ProjectCardProps) {
+function ProjectCard({ project, t }: ProjectCardProps) {
   return (
     /* whileHover: lift the card up by 4px and increase shadow on hover */
     <motion.article
@@ -68,7 +73,7 @@ function ProjectCard({ project }: ProjectCardProps) {
         {project.aiPowered && (
           <span className="flex items-center gap-1 text-xs px-2 py-0.5 rounded-full border border-[var(--color-border)] text-[var(--color-muted)] whitespace-nowrap">
             <Sparkles size={10} />
-            AI-powered
+            {t.aiPowered}
           </span>
         )}
       </div>
@@ -99,7 +104,7 @@ function ProjectCard({ project }: ProjectCardProps) {
         aria-label={`View ${project.title} on GitHub`}
       >
         <Github size={13} />
-        View on GitHub
+        {t.viewOnGithub}
         <ExternalLink size={11} />
       </a>
     </motion.article>

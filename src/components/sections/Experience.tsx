@@ -11,8 +11,11 @@
 
 import { motion } from 'framer-motion'
 import { experiences } from '@/data/experience'
+import { useTranslation } from '@/context/LanguageContext'
 
 export function Experience() {
+  const { t } = useTranslation()
+
   return (
     <section id="experience" className="py-24 pb-32 md:pb-24" aria-labelledby="experience-heading">
       <motion.div
@@ -25,7 +28,7 @@ export function Experience() {
           id="experience-heading"
           className="text-2xl font-semibold mb-10 text-[var(--color-text)]"
         >
-          Experience
+          {t.experience.heading}
         </h2>
 
         {/* Timeline container */}

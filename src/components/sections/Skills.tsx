@@ -7,8 +7,11 @@
 
 import { motion } from 'framer-motion'
 import { skills, SKILL_CATEGORIES } from '@/data/skills'
+import { useTranslation } from '@/context/LanguageContext'
 
 export function Skills() {
+  const { t } = useTranslation()
+
   return (
     <section id="skills" className="py-24" aria-labelledby="skills-heading">
       <motion.div
@@ -21,10 +24,10 @@ export function Skills() {
           id="skills-heading"
           className="text-2xl font-semibold mb-10 text-[var(--color-text)]"
         >
-          Skills
+          {t.skills.heading}
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
           {SKILL_CATEGORIES.map((category, i) => {
             const categorySkills = skills.filter(s => s.category === category)
             return (
@@ -34,16 +37,15 @@ export function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="flex flex-col gap-4 p-5 rounded-lg border border-[var(--color-text)] bg-[var(--color-bg)]"
+                className="flex flex-col gap-5 p-6 rounded-lg border border-[var(--color-text)] bg-[var(--color-bg)]"
               >
                 <h3 className="font-semibold text-[var(--color-text)]">{category}</h3>
 
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-4">
                   {categorySkills.map(skill => (
                     <div key={skill.name}>
                       <div className="flex justify-between mb-1.5 text-sm">
                         <span className="font-medium text-[var(--color-text)]">{skill.name}</span>
-                        <span className="text-[var(--color-muted)]">{skill.level}%</span>
                       </div>
                       <div
                         className="h-1.5 w-full rounded-full bg-[var(--color-border)]"

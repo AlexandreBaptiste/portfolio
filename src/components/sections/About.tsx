@@ -9,12 +9,15 @@
  *
  * Animation: the section fades in when it scrolls into view.
  * whileInView triggers the animation when the element enters the viewport.
- * iewport={{ once: true }} prevents re-animating on scroll back up.
+ * viewport={{ once: true }} prevents re-animating on scroll back up.
  */
 
 import { motion } from 'framer-motion'
+import { useTranslation } from '@/context/LanguageContext'
 
 export function About() {
+  const { t } = useTranslation()
+
   return (
     <section id="about" className="py-24" aria-labelledby="about-heading">
       <motion.div
@@ -27,16 +30,22 @@ export function About() {
           id="about-heading"
           className="text-2xl font-semibold mb-10 text-[var(--color-text)]"
         >
-          About Me
+          {t.about.heading}
         </h2>
 
         {/* ---- EDIT THIS CONTENT ---- */}
         <div className="flex flex-col gap-5 text-[var(--color-muted)] leading-relaxed">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. I am a Senior Software Engineer
-            and Technical Leader with 8 years of experience at Capgemini, specialising in
-            backend development and systems architecture.
+            Développeur sénior avec 9 ans d’expérience chez Capgemini, j’évolue principalement sur des problématiques backend,
+            avec une ouverture progressive vers le front-end. Lead Developer et Architecte junior, 
+            j’accompagne une équipe d’une dizaine de développeurs sur des projets à forts enjeux,
+            en apportant une vision à la fois technique et pragmatique.
+          </p>
+          <p>
+            Rigoureux et orienté qualité, je m’attache à concevoir des solutions performantes, maintenables et durables, 
+            notamment à travers des travaux de migration et d’amélioration continue.
+            Curieux et résilient, j’apprécie collaborer avec les équipes métier pour construire des solutions pertinentes, 
+            tout en veillant à offrir à mon équipe un cadre clair et efficace.
           </p>          
         </div>
         {/* ---- END EDIT ---- */}

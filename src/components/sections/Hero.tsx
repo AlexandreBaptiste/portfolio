@@ -13,6 +13,7 @@
  */
 
 import { motion } from 'framer-motion'
+import { useTranslation } from '@/context/LanguageContext'
 
 // Reusable animation variant:
 // "hidden" = starting state (invisible, 20px below final position)
@@ -23,6 +24,8 @@ const fadeUp = {
 }
 
 export function Hero() {
+  const { t } = useTranslation()
+
   return (
     <section
       id="hero"
@@ -52,7 +55,7 @@ export function Hero() {
           transition={{ duration: 0.5 }}
           className="text-lg text-[var(--color-muted)] font-medium"
         >
-          Senior Backend Developer · Technical Leader · .NET Enthusiast · @Capgemini
+          {t.hero.tagline}
         </motion.p>
       </motion.div>
     </section>

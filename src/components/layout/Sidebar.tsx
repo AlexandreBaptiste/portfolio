@@ -21,14 +21,14 @@ import { Linkedin, Github, Mail } from 'lucide-react'
 import { useActiveSection } from '@/hooks/useActiveSection'
 import { cn } from '@/lib/utils'
 import { motion } from 'framer-motion'
+import { useTranslation } from '@/context/LanguageContext'
 
-// The list of sections and their display labels.
-// Changing the id here must match the id= attribute on the section element in App.tsx.
+// NAV_ITEMS now just stores section IDs; labels come from translations.
 const NAV_ITEMS = [
-  { id: 'about',      label: 'About' },
-  { id: 'skills',     label: 'Skills' },
-  { id: 'projects',   label: 'Projects' },
-  { id: 'experience', label: 'Experience' },
+  { id: 'about'      },
+  { id: 'skills'     },
+  { id: 'projects'   },
+  { id: 'experience' },
 ] as const
 
 const SECTION_IDS = NAV_ITEMS.map(item => item.id)
@@ -54,6 +54,7 @@ const CONTACT_LINKS = [
 
 export function Sidebar() {
   const activeSection = useActiveSection([...SECTION_IDS])
+  const { t } = useTranslation()
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
@@ -65,7 +66,8 @@ export function Sidebar() {
       {/* --- Section navigation --- */}
       <nav aria-label="Page sections">
         <ul className="flex flex-col items-center gap-6">
-          {NAV_ITEMS.map(({ id, label }) => {
+          {NAV_ITEMS.map(({ id }) => {
+            const label = t.nav[id as keyof typeof t.nav]
             const isActive = activeSection === id
             return (
               <li key={id}>

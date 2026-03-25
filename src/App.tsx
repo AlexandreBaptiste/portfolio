@@ -13,23 +13,30 @@
  * document.documentElement.classList.
  */
 
-import { Sidebar, MobileNav } from '@/components/layout/Sidebar'
-import { ThemeToggle }          from '@/components/layout/ThemeToggle'
-import { Hero }                 from '@/components/sections/Hero'
-import { About }                from '@/components/sections/About'
-import { Skills }               from '@/components/sections/Skills'
-import { Projects }             from '@/components/sections/Projects'
-import { Experience }           from '@/components/sections/Experience'
-import { useTheme }             from '@/hooks/useTheme'
+import { Sidebar, MobileNav }   from '@/components/layout/Sidebar'
+import { ThemeToggle }           from '@/components/layout/ThemeToggle'
+import { LanguageToggle }        from '@/components/layout/LanguageToggle'
+import { Hero }                  from '@/components/sections/Hero'
+import { About }                 from '@/components/sections/About'
+import { Skills }                from '@/components/sections/Skills'
+import { Projects }              from '@/components/sections/Projects'
+import { Experience }            from '@/components/sections/Experience'
+import { useTheme }              from '@/hooks/useTheme'
+import { useLanguage }           from '@/hooks/useLanguage'
+import { LanguageContext }       from '@/context/LanguageContext'
+import { translations }          from '@/i18n/translations'
 
 export default function App() {
-  const { theme, toggleTheme } = useTheme()
+  const { theme, toggleTheme }       = useTheme()
+  const { language, toggleLanguage } = useLanguage()
 
   return (
+    <LanguageContext.Provider value={{ language, toggleLanguage, t: translations[language] }}>
     <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)]">
       {/* ---- Layout shell ---- */}
       <Sidebar />
       <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+      <LanguageToggle language={language} toggleLanguage={toggleLanguage} />
       <MobileNav />
 
       {/* ---- Main scrollable content ----
@@ -46,5 +53,6 @@ export default function App() {
         </main>
       </div>
     </div>
+    </LanguageContext.Provider>
   )
 }
