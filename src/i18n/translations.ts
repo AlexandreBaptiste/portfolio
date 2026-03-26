@@ -38,6 +38,12 @@ export interface Translations {
   }
   skills: {
     heading: string
+    proficiency: {
+      learning: string
+      proficient: string
+      advanced: string
+      expert: string
+    }
   }
   projects: {
     heading: string
@@ -77,6 +83,12 @@ export const translations: Record<Language, Translations> = {
     },
     skills: {
       heading: 'Skills',
+      proficiency: {
+        learning:   'Learning',
+        proficient: 'Proficient',
+        advanced:   'Advanced',
+        expert:     'Expert',
+      },
     },
     projects: {
       heading:      'Projects',
