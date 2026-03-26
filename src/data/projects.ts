@@ -25,35 +25,35 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: 'DotNet Starter Kit',
+    title: '.NET Interview Prep Kit',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. A robust .NET microservices boilerplate with clean architecture and a fully automated CI/CD pipeline ready to deploy to Azure.',
-    tags: ['C#', '.NET', 'Docker', 'Azure DevOps'],
-    githubUrl: 'https://github.com/AlexandreBaptiste/dotnet-starter-kit',
-    aiPowered: false,
-  },
-  {
-    title: 'AI Assistant Toolkit',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. An LLM-powered internal assistant integrating multiple AI providers via a unified .NET API with streaming responses.',
-    tags: ['C#', '.NET', 'OpenAI', 'Azure', 'REST API'],
-    githubUrl: 'https://github.com/AlexandreBaptiste/ai-assistant-toolkit',
+      'Questions I may ask for interviews / that were asked to me. It\'s helping me to stay up to date and condense knowledge',
+    tags: ['C#', '.NET'],
+    githubUrl: 'https://github.com/AlexandreBaptiste/dotnet-interviews',
     aiPowered: true,
   },
   {
-    title: 'SQL Audit Dashboard',
+    title: 'Multithreading',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. A real-time SQL Server audit and monitoring dashboard with role-based access control and alerting.',
-    tags: ['C#', 'SQL Server', 'React', 'TypeScript'],
-    githubUrl: 'https://github.com/AlexandreBaptiste/sql-audit-dashboard',
+      'A comprehensive .NET 10 learning repository demonstrating multi-threading concepts — from threads and tasks to synchronization primitives, concurrent collections, and production patterns — each proven correct by unit tests.',
+    tags: ['C#', '.NET', 'Concept', 'Learning'],
+    githubUrl: 'https://github.com/AlexandreBaptiste/multithreading',
     aiPowered: false,
   },
   {
-    title: 'React Portfolio',
+    title: '.NET Performance Optimization',
     description:
-      'This very portfolio — built to learn React 19 while showcasing professional work. Single-page, dark/light mode, deployed to GitHub Pages via GitHub Actions.',
-    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
-    githubUrl: 'https://github.com/AlexandreBaptiste/portfolio',
+      'Hands-on .NET 10 performance optimization examples: 14 topics (Span<T>, ArrayPool, SIMD, reflection, GC tuning, and more), each with paired Naive/Optimized implementations, xUnit correctness tests, and BenchmarkDotNet microbenchmarks.',
+    tags: ['C#', 'SQL Server', 'BenchmarkDotNet', 'Learning'],
+    githubUrl: 'https://github.com/AlexandreBaptiste/performances',
     aiPowered: false,
+  },
+  {
+    title: 'Specify Pomodoro',
+    description:
+      'Application Pomodoro full-stack (Vue 3 + ASP.NET Core + Azure SQL) avec authentification JWT, suivi des sessions et statistiques. Réalisée dans le cadre d\'un workshop de mise en pratique de GitHub Copilot avec Specify.',
+    tags: ['Vue 3', 'ASP.NET Core', 'Azure SQL'],
+    githubUrl: 'https://github.com/AlexandreBaptiste/specify-pomodoro',
+    aiPowered: true,
   },
 ]

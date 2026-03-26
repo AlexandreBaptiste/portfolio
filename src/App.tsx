@@ -33,6 +33,7 @@ export default function App() {
   return (
     <LanguageContext.Provider value={{ language, toggleLanguage, t: translations[language] }}>
     <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)]">
+      
       {/* ---- Layout shell ---- */}
       <Sidebar />
       <ThemeToggle theme={theme} toggleTheme={toggleTheme} />

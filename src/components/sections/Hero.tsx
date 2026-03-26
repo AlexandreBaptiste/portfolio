@@ -30,7 +30,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="pt-16 pb-25"
+      className="pt-14 pb-15"
       aria-label="Introduction"
     >
       {/* Staggered container: each child animates after the previous one
@@ -46,7 +46,7 @@ export function Hero() {
         <motion.h1
           variants={fadeUp}
           transition={{ duration: 0.5 }}
-          className="text-5xl md:text-6xl font-thin tracking-widest text-[var(--color-text)] leading-tight"
+          className="text-5xl md:text-5xl font-thin tracking-widest text-[var(--color-text)] leading-tight"
         >
           Alexandre<br /><span className="uppercase">Baptiste</span>
         </motion.h1>
@@ -54,7 +54,7 @@ export function Hero() {
         <motion.p
           variants={fadeUp}
           transition={{ duration: 0.5 }}
-          className="text-lg text-[var(--color-muted)] font-medium"
+          className="text-[var(--color-muted)] font-medium"
         >
           {t.hero.tagline}
         </motion.p>
@@ -67,9 +67,9 @@ export function Hero() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={t.hero.certificationLabel}
-          className="w-fit flex items-center gap-2.5 px-4 py-2 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-muted)] text-sm font-medium tracking-wide hover:border-[var(--color-text)] hover:text-[var(--color-text)] transition-colors duration-200 group"
+          className="w-fit flex items-center gap-2.5 px-4 py-2 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-muted)] text-xs font-medium tracking-wide hover:border-[var(--color-text)] hover:text-[var(--color-text)] transition-colors duration-200 group"
         >
-          <Award size={16} className="text-[var(--color-accent)] flex-shrink-0" />
+          <Award size={20} className="text-[var(--color-accent)] flex-shrink-0" />
           {t.hero.certificationLabel}
         </motion.a>
       </motion.div>

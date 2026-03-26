@@ -57,7 +57,12 @@ export function Sidebar() {
   const scrollTo = (id: string) => {
     // Immediately update the underline so it doesn't wait for the scroll animation
     setActiveSection(id)
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    // "About" is the first nav item — scroll to the very top (hero section)
+    if (id === 'about') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
   return (

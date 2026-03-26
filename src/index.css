@@ -19,12 +19,12 @@
   --font-sans: 'Montserrat', system-ui, sans-serif;
 
   /* ---- Dark mode colors (default) ---- */
-  --color-bg:         #0A0A0A;  /* pure black background */
-  --color-surface:    #141414;  /* slightly lighter black for cards */
-  --color-border:     #2A2A2A;  /* subtle borders */
-  --color-text:       #FFFFFF;  /* primary text */
-  --color-muted:      #888888;  /* secondary/faded text */
-  --color-accent:     #FFFFFF;  /* interactive accent (white-on-black) */
+  --color-bg:           #0A0A0A;  /* pure black background */
+  --color-surface:      #141414;  /* slightly lighter black for cards */
+  --color-border:       #2A2A2A;  /* subtle borders */
+  --color-text:         #FFFFFF;  /* primary text */
+  --color-muted:        #888888;  /* secondary/faded text */
+  --color-accent:       #FFFFFF;  /* interactive accent (white-on-black) */
   --color-accent-hover: #CCCCCC;
 
   /* ---- Spacing / radius ---- */
@@ -39,7 +39,7 @@
   html {
     /* Scale up the entire site ~20% by bumping the root font size.
        All rem-based Tailwind utilities (spacing, font sizes) scale automatically. */
-    font-size: 120%;
+    font-size: 110%;
     /* Smooth scrolling when clicking sidebar navigation links */
     scroll-behavior: smooth;
   }
@@ -77,10 +77,6 @@
 .hero-about-layout {
   display: flex;
   flex-direction: column;
-}
-
-.hero-slot {
-  /* full width on mobile */
 }
 
 @media (min-width: 768px) {

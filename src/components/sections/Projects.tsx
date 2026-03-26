@@ -43,8 +43,13 @@ export function Projects() {
 
         {/* Responsive grid: 1 column on mobile, 2 on md, 3 on lg screens */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
-          {projects.map(project => (
-            <ProjectCard key={project.title} project={project} t={t.projects} />
+          {projects.map((project, index) => (
+            <ProjectCard
+              key={project.title}
+              project={project}
+              description={t.projects.items[index]?.description ?? project.description}
+              t={t.projects}
+            />
           ))}
         </div>
       </motion.div>
@@ -52,14 +57,13 @@ export function Projects() {
   )
 }
 
-/* ---- Helper sub-component: a single project card ---- */
-
 interface ProjectCardProps {
   project: Project
+  description: string
   t: Translations['projects']
 }
 
-function ProjectCard({ project, t }: ProjectCardProps) {
+function ProjectCard({ project, description, t }: ProjectCardProps) {
   return (
     /* whileHover: lift the card up by 4px and increase shadow on hover */
     <motion.article
@@ -79,7 +83,7 @@ function ProjectCard({ project, t }: ProjectCardProps) {
       </div>
 
       <p className="text-sm text-[var(--color-muted)] leading-relaxed flex-1">
-        {project.description}
+        {description}
       </p>
 
       <div className="flex flex-wrap gap-1.5">
@@ -93,17 +97,19 @@ function ProjectCard({ project, t }: ProjectCardProps) {
         ))}
       </div>
 
-      <a
-        href={project.githubUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center gap-1.5 text-xs font-medium text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors duration-200 w-fit"
-        aria-label={`View ${project.title} on GitHub`}
-      >
-        <Github size={13} />
-        {t.viewOnGithub}
-        <ExternalLink size={11} />
-      </a>
+      <div className="flex justify-end">
+        <a
+          href={project.githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1.5 text-xs font-medium text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors duration-200"
+          aria-label={`View ${project.title} on GitHub`}
+        >
+          <Github size={13} />
+          {t.viewOnGithub}
+          <ExternalLink size={11} />
+        </a>
+      </div>
     </motion.article>
   )
 }

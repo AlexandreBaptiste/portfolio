@@ -46,7 +46,9 @@ export function Experience() {
           {/* Vertical timeline line */}
           <div className="absolute left-2 top-2 bottom-0 w-px bg-[var(--color-border)]" aria-hidden="true" />
 
-          {experiences.map((exp, index) => (
+          {experiences.map((exp, index) => {
+            const tItem = t.experience.items[index]
+            return (
             <motion.article
               key={`${exp.project}-${index}`}
               initial={{ opacity: 0, x: -10 }}
@@ -61,29 +63,29 @@ export function Experience() {
                 aria-hidden="true"
               />
 
-              {/* Header row: dates + company */}
+              {/* Header row: dates */}
               <div className="flex flex-wrap items-center gap-2 mb-2">
                 <span className="text-xs font-medium text-[var(--color-muted)] tracking-wide uppercase">
-                  {exp.startDate} — {exp.endDate}
+                  {exp.startDate} — {exp.endDate === 'Present' ? t.experience.present : exp.endDate}
                 </span>
                 <span className="text-xs text-[var(--color-muted)] opacity-40" aria-hidden="true">·</span>
               </div>
 
               {/* Project & Role */}
               <div className="flex flex-wrap items-baseline gap-2 mb-3">
-                <h3 className="font-semibold text-[var(--color-text)]">{exp.project}</h3>
-                <p className="text-xs text-[var(--color-muted)] italic">{exp.role}</p>
+                <h3 className="font-semibold text-[var(--color-text)]">{tItem?.project ?? exp.project}</h3>
+                <p className="text-xs text-[var(--color-muted)] italic">{tItem?.role ?? exp.role}</p>
               </div>
 
               {/* Description — visually lighter */}
-              <p className="text-xs text-[var(--color-muted)] leading-relaxed mb-4 opacity-80 border-l-2 border-[var(--color-border)] pl-3">
-                {exp.description}
+              <p className="text-SM text-[var(--color-muted)] leading-relaxed mb-4 opacity-80 border-l-2 border-[var(--color-border)] pl-3">
+                {tItem?.description ?? exp.description}
               </p>
 
               {/* Highlights grid */}
-              {exp.highlights.length > 0 && (
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                  {exp.highlights.map((highlight, i) => {
+              {(tItem?.highlights ?? exp.highlights).length > 0 && (
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {(tItem?.highlights ?? exp.highlights).map((highlight, i) => {
                     const { label, body } = parseHighlight(highlight)
                     return (
                       <li
@@ -91,11 +93,11 @@ export function Experience() {
                         className="flex flex-col gap-0.5 bg-[var(--color-border)]/20 rounded-sm px-3 py-2"
                       >
                         {label && (
-                          <span className="text-[10px] font-semibold text-[var(--color-text)] uppercase tracking-wider opacity-70">
+                          <span className=" font-semibold text-[var(--color-text)] uppercase tracking-wider opacity-70">
                             {label}
                           </span>
                         )}
-                        <span className="text-xs text-[var(--color-muted)] leading-snug">
+                        <span className="text-SM text-[var(--color-muted)] leading-snug">
                           {body}
                         </span>
                       </li>
@@ -104,7 +106,8 @@ export function Experience() {
                 </ul>
               )}
             </motion.article>
-          ))}
+            )
+          })}
         </div>
       </motion.div>
     </section>
