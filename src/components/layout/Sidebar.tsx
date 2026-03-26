@@ -103,20 +103,27 @@ export function Sidebar() {
       </nav>
 
       {/* --- Contact icon links — directly below nav with a top margin --- */}
-      <div className="flex flex-col items-center gap-5 mt-10" role="list" aria-label="Contact links">
+      <ul className="flex flex-col items-center gap-5 mt-10 list-none p-0" aria-label="Contact links">
         {CONTACT_LINKS.map(({ label, href, icon: Icon }) => (
-          <a
-            key={label}
-            href={href}
-            target={href.startsWith('mailto') ? undefined : '_blank'}
-            rel="noopener noreferrer"
-            aria-label={label}
-            className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors duration-200"
-          >
-            <Icon size={26} />
-          </a>
+          <li key={label}>
+            <a
+              href={href}
+              target={href.startsWith('mailto') ? undefined : '_blank'}
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="relative group text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors duration-200"
+            >
+              <Icon size={26} />
+              <span
+                className="absolute left-full ml-3 top-1/2 -translate-y-1/2 px-2 py-1 text-xs rounded border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] whitespace-nowrap pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-150"
+                aria-hidden="true"
+              >
+                {label}
+              </span>
+            </a>
+          </li>
         ))}
-      </div>
+      </ul>
     </aside>
   )
 }

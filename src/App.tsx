@@ -13,6 +13,7 @@
  * document.documentElement.classList.
  */
 
+import { useState, useEffect }   from 'react'
 import { Sidebar, MobileNav }   from '@/components/layout/Sidebar'
 import { ThemeToggle }           from '@/components/layout/ThemeToggle'
 import { LanguageToggle }        from '@/components/layout/LanguageToggle'
@@ -25,6 +26,29 @@ import { useTheme }              from '@/hooks/useTheme'
 import { useLanguage }           from '@/hooks/useLanguage'
 import { LanguageContext }       from '@/context/LanguageContext'
 import { translations }          from '@/i18n/translations'
+import { ChevronUp }             from 'lucide-react'
+
+function ScrollToTopMobile() {
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 300)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  if (!visible) return null
+
+  return (
+    <button
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      aria-label="Back to top"
+      className="md:hidden fixed bottom-20 right-4 z-50 w-10 h-10 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] flex items-center justify-center shadow-sm transition-opacity duration-200"
+    >
+      <ChevronUp size={18} />
+    </button>
+  )
+}
 
 export default function App() {
   const { theme, toggleTheme }       = useTheme()
@@ -33,12 +57,16 @@ export default function App() {
   return (
     <LanguageContext.Provider value={{ language, toggleLanguage, t: translations[language] }}>
     <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)]">
-      
+
       {/* ---- Layout shell ---- */}
       <Sidebar />
-      <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
-      <LanguageToggle language={language} toggleLanguage={toggleLanguage} />
+      {/* ---- Fixed top-right controls: language + theme toggles in a shared container ---- */}
+      <div className="fixed top-4 right-4 z-50 flex items-center gap-2">
+        <LanguageToggle language={language} toggleLanguage={toggleLanguage} />
+        <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+      </div>
       <MobileNav />
+      <ScrollToTopMobile />
 
       {/* ---- Main scrollable content ----
           pl-0 on mobile (no sidebar), pl-48 on md+ to clear the fixed sidebar

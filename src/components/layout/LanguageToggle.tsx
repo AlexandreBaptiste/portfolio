@@ -30,7 +30,7 @@ export function LanguageToggle({ language, toggleLanguage }: LanguageToggleProps
     <button
       onClick={toggleLanguage}
       aria-label={ariaLabel}
-      className="fixed top-4 right-14 z-50 w-9 h-9 rounded-full border border-[var(--color-text)] cursor-pointer overflow-hidden p-0"
+      className="w-9 h-9 rounded-full border border-[var(--color-text)] cursor-pointer overflow-hidden p-0"
     >
       <AnimatePresence mode="wait" initial={false}>
         <motion.img

@@ -23,7 +23,7 @@ export function ThemeToggle({ theme, toggleTheme }: ThemeToggleProps) {
     <button
       onClick={toggleTheme}
       aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-      className="fixed top-4 right-4 z-50 w-9 h-9 rounded-full border border-[var(--color-text)] bg-[var(--color-surface)] text-[var(--color-text)] hover:text-[var(--color-accent-hover)] transition-colors duration-300 cursor-pointer flex items-center justify-center"
+      className="w-9 h-9 rounded-full border border-[var(--color-text)] bg-[var(--color-surface)] text-[var(--color-text)] hover:text-[var(--color-accent-hover)] transition-colors duration-300 cursor-pointer flex items-center justify-center"
     >
       {/* AnimatePresence allows Framer Motion to animate elements as they
           enter and leave the DOM (here, swapping Sun <-> Moon icons) */}

@@ -1,73 +1,78 @@
-# React + TypeScript + Vite
+# Alexandre Baptiste — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **An educational project built with [GitHub Copilot](https://github.com/features/copilot) as the primary AI assistant.**
 
-Currently, two official plugins are available:
+Live at **[alexandrebaptiste.github.io/portfolio](https://alexandrebaptiste.github.io/portfolio)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## About this project
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This portfolio is both a personal showcase and a deliberate experiment: every feature, refactor, translation, and design decision was driven through a conversation with GitHub Copilot agent mode. The goal was to demonstrate that a developer can use an AI assistant correctly — not as an autocomplete, but as a collaborative engineering partner.
 
-## Expanding the ESLint configuration
+What that looked like in practice:
+- Asking for code reviews and acting on the findings
+- Requesting UI improvements and iterating on suggestions
+- Delegating i18n work (EN ↔ FR) including full translation of content sections
+- Using the agent to fix bugs it introduced (and learning from the process)
+- Keeping tests green through every change
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+The result is a fully functional, bilingual, dark/light-mode portfolio — and a record of how to prompt, review, and steer an AI assistant on a real front-end project.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Tech stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Layer | Technology |
+|---|---|
+| Framework | [React 19](https://react.dev) + [TypeScript](https://www.typescriptlang.org) |
+| Build tool | [Vite](https://vite.dev) |
+| Styling | [Tailwind CSS v4](https://tailwindcss.com) |
+| Animation | [Framer Motion](https://www.framer.com/motion) |
+| Icons | [Lucide React](https://lucide.dev) |
+| Testing | [Vitest](https://vitest.dev) + [React Testing Library](https://testing-library.com) |
+| Hosting | [GitHub Pages](https://pages.github.com) |
+
+---
+
+## Features
+
+- **Bilingual** — full English / French toggle, all content translated
+- **Dark / light mode** — persisted to `localStorage`
+- **Animated timeline** — Experience section with staggered Framer Motion entries
+- **Skill bars** — per-category cards with animated progress and proficiency labels
+- **Project cards** — sourced from a single data file, easy to extend
+- **Accessible** — semantic HTML, ARIA labels, keyboard navigation
+- **Responsive** — desktop sidebar + mobile bottom nav with scroll-to-top
+
+---
+
+## Getting started
+
+```bash
+npm install
+npm run dev        # development server
+npm run build      # production build
+npm test           # run tests
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Project structure
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+src/
+├── components/
+│   ├── layout/      # Sidebar, ThemeToggle, LanguageToggle
+│   └── sections/    # Hero, About, Skills, Projects, Experience
+├── context/         # LanguageContext + useTranslation hook
+├── data/            # skills.ts, projects.ts, experience.ts  ← edit here
+├── hooks/           # useTheme, useLanguage, useActiveSection
+└── i18n/            # translations.ts (EN + FR strings)
+```
+
+To add a project or experience entry, edit the corresponding file in `src/data/` — no component code needs to change.
+
+---
+
+> Built with [GitHub Copilot](https://github.com/features/copilot) — certified [GH-300](https://learn.microsoft.com/en-us/users/baptistealexandre-5281/credentials/certification/github-copilot?tab=credentials-tab).

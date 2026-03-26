@@ -66,7 +66,7 @@ export function Experience() {
               {/* Header row: dates */}
               <div className="flex flex-wrap items-center gap-2 mb-2">
                 <span className="text-xs font-medium text-[var(--color-muted)] tracking-wide uppercase">
-                  {exp.startDate} — {exp.endDate === 'Present' ? t.experience.present : exp.endDate}
+                  {exp.startDate} — {exp.isCurrent ? t.experience.present : exp.endDate}
                 </span>
                 <span className="text-xs text-[var(--color-muted)] opacity-40" aria-hidden="true">·</span>
               </div>
@@ -78,26 +78,27 @@ export function Experience() {
               </div>
 
               {/* Description — visually lighter */}
-              <p className="text-SM text-[var(--color-muted)] leading-relaxed mb-4 opacity-80 border-l-2 border-[var(--color-border)] pl-3">
+              <p className="text-sm text-[var(--color-muted)] leading-relaxed mb-4 opacity-80 border-l-2 border-[var(--color-border)] pl-3">
                 {tItem?.description ?? exp.description}
               </p>
 
               {/* Highlights grid */}
               {(tItem?.highlights ?? exp.highlights).length > 0 && (
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
                   {(tItem?.highlights ?? exp.highlights).map((highlight, i) => {
                     const { label, body } = parseHighlight(highlight)
                     return (
                       <li
                         key={i}
-                        className="flex flex-col gap-0.5 bg-[var(--color-border)]/20 rounded-sm px-3 py-2"
+                        className="flex items-baseline gap-2 text-sm text-[var(--color-muted)] leading-snug"
                       >
-                        {label && (
-                          <span className=" font-semibold text-[var(--color-text)] uppercase tracking-wider opacity-70">
-                            {label}
-                          </span>
-                        )}
-                        <span className="text-SM text-[var(--color-muted)] leading-snug">
+                        <span className="text-[var(--color-text)] opacity-40 flex-shrink-0 text-xs">▸</span>
+                        <span>
+                          {label && (
+                            <span className="font-semibold text-[var(--color-text)] mr-1.5">
+                              {label}
+                            </span>
+                          )}
                           {body}
                         </span>
                       </li>

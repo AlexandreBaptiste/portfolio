@@ -19,6 +19,8 @@ export interface Experience {
   role: string
   startDate: string
   endDate: string
+  /** True when this is the current/ongoing role — use instead of comparing endDate string */
+  isCurrent?: boolean
   description: string
   highlights: string[]
 }
@@ -30,6 +32,7 @@ export const experiences: Experience[] = [
     role: 'Technical Leader, Senior Software Engineer & Junior Architect',
     startDate: '2023',
     endDate: 'Present',
+    isCurrent: true,
     description:
       'I still am within this mission today. And it\'s been a drastic change from what I knew with my previous experiences but for the better. '+
       'This project is helping me grow professionally and expand my skill set. OpenShift, Kubernetes and cloud-native technologies have become integral to our workflow. '+

@@ -68,31 +68,4 @@
   }
 }
 
-/* =============================================================================
-   Hero + About side-by-side layout.
-   Using plain CSS @media instead of Tailwind responsive classes to ensure
-   reliable application regardless of class scanning.
-   On mobile: stacked column. On desktop (768px+): Hero left (1/3), About right (2/3).
-   ============================================================================= */
-.hero-about-layout {
-  display: flex;
-  flex-direction: column;
-}
 
-@media (min-width: 768px) {
-  .hero-about-layout {
-    flex-direction: row;
-    gap: 3rem;
-    min-height: 100vh;
-    align-items: center;
-  }
-
-  .hero-slot {
-    width: 33.333%;
-    flex-shrink: 0;
-  }
-
-  .about-slot {
-    flex: 1;
-  }
-}

@@ -9,6 +9,12 @@ import { motion } from 'framer-motion'
 import { skills, SKILL_CATEGORIES } from '@/data/skills'
 import { useTranslation } from '@/context/LanguageContext'
 
+function proficiencyLabel(level: number): string {
+  if (level <= 33) return 'Learning'
+  if (level <= 66) return 'Proficient'
+  return 'Expert'
+}
+
 export function Skills() {
   const { t } = useTranslation()
 
@@ -46,6 +52,7 @@ export function Skills() {
                     <div key={skill.name}>
                       <div className="flex justify-between mb-1.5 text-sm">
                         <span className="font-medium text-[var(--color-text)]">{skill.name}</span>
+                        <span className="text-xs text-[var(--color-muted)]">{proficiencyLabel(skill.level)}</span>
                       </div>
                       <div
                         className="h-1.5 w-full rounded-full bg-[var(--color-border)]"
