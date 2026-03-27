@@ -183,6 +183,12 @@ export const translations: Record<Language, Translations> = {
     },
     skills: {
       heading: 'Compétences',
+      proficiency: {
+        learning:   'En apprentissage',
+        proficient: 'Compétent',
+        advanced:   'Avancé',
+        expert:     'Expert',
+      },
     },
     projects: {
       heading:      'Projets',
